@@ -73,7 +73,7 @@ recursos.
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/gmar313/Reproductor-de-Audio
+git clone https://github.com/gmar313/realtime-audio-player-stm32
 
 # Abrir el proyecto en STM32CubeIDE
 # Compilar y flashear con ST-Link
