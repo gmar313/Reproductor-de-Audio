@@ -89,18 +89,19 @@ git clone https://github.com/gmar313/Reproductor-de-Audio
 ## Estructura del repositorio
 
 ```
-TP-especial_final/
-├── Core/
-│   ├── Src/
-│   │   ├── main.c
-│   │   ├── fft.c     		# Implementación FFT
-│   │   └── biquad.c       	# Implementación filtros biquad 
-│   └── Inc/
-├── Middlewares/
-│   └── Third_Party/
-│ 	├── FreeRTOS/
-│	└── FatFs/		#implementacion de el lector SD
-├── Drivers/
+Reproductor-de-Audio
+├── TP-especial_final/
+│     ├── Core/
+│     │   ├── Src/
+│     │   │   ├── main.c
+│     │   │   ├── fft.c     		# Implementación FFT
+│     │   │   └── biquad.c       	# Implementación filtros biquad 
+│     │   └── Inc/
+│     ├── Middlewares/
+│     │   └── Third_Party/
+│     │         ├── FreeRTOS/
+│     │	    └── FatFs/		#implementacion de el lector SD
+│     └─ Drivers/
 └── README.md
 ```
 
