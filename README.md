@@ -102,6 +102,7 @@ Reproductor-de-Audio
 │     │         ├── FreeRTOS/
 │     │	    └── FatFs/		#implementacion de el lector SD
 │     └─ Drivers/
+└── TE_explicacion.pdf              # Informe completo del proyecto
 └── README.md
 ```
 
