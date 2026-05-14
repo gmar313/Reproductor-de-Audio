@@ -44,9 +44,9 @@ El diseño se basa en una arquitectura de doble buffer (ping-pong buffer) que pe
 ┌─────────────────────────────────────────┐
 │              FreeRTOS                   │
 ├────────────┬────────────┬───────────────┤
-│  Task: SD  │ Task: DSP  │ Task: Output  │
-│  Reader    │ (Biquad +  │ (DAC/PWM +    │
-│            │  FFT)      │  OLED)        │
+│  Task:leer │ Task: Leer │ Task:Pantalla │
+│     Boton  │ Tarjeta Sd │ (OLED)        │
+│            │            │               │
 └─────┬──────┴─────┬──────┴───────┬───────┘
       │            │              │
       └────────────┴──────────────┘
@@ -54,9 +54,9 @@ El diseño se basa en una arquitectura de doble buffer (ping-pong buffer) que pe
 ```
 
 **Flujo de datos:**
-1. La tarea de lectura obtiene muestras de la SD y llena el buffer inactivo
-2. La tarea DSP aplica los filtros biquad y calcula la FFT sobre el buffer activo
-3. La tarea de salida envía las muestras procesadas al DAC y actualiza la pantalla OLED
+1. La tarea de lectura de botones esta leyendo los valores de los botones y de los potenciometros
+2. La tarea de lectura obtiene muestras de la SD, llena el buffer inactivo y calcula el valor aplicando la ganancia del filtro Biquad
+3. La tarea de pantalla maneja todo lo que se ve en pantalla, tiene implementada dentro la maquina de estados y tambien calcula el alto de las FFT
 
 ---
 
@@ -64,9 +64,8 @@ El diseño se basa en una arquitectura de doble buffer (ping-pong buffer) que pe
 
 **¿Por qué doble buffer?** Leer desde SD tiene latencia variable. Con un solo buffer, cualquier demora en la lectura produce un corte en el audio. El doble buffer desacopla completamente la lectura de la reproducción.
 
-**¿Por qué FreeRTOS?** Las tres operaciones (leer SD, procesar señal, reproducir) tienen requisitos de timing distintos. Separarlo en tareas con prioridades permite que el sistema cumpla los deadlines de audio sin bloqueos.
-
-**Filtros biquad:** Se implementaron en forma directa II transpuesta para minimizar el uso de memoria y errores de punto fijo. Los coeficientes se recalculan cuando el usuario ajusta la ganancia con los potenciómetros.
+**¿Por qué FreeRTOS?** Las tres operaciones (leer SD, pantalla, perifericos) tienen requisitos de timing distintos. Separarlo en tareas con prioridades permite que el sistema cumpla los deadlines de audio sin bloqueos y evitar el uso compartido de
+recursos.
 
 ---
 
@@ -74,7 +73,7 @@ El diseño se basa en una arquitectura de doble buffer (ping-pong buffer) que pe
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/TU_USUARIO/audio-player-stm32
+git clone https://github.com/gmar313/Reproductor-de-Audio
 
 # Abrir el proyecto en STM32CubeIDE
 # Compilar y flashear con ST-Link
