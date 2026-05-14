@@ -1,0 +1,16 @@
+../Core/Src/user_diskio_spi.c:92:6:SPI_Timer_On	1
+../Core/Src/user_diskio_spi.c:97:9:SPI_Timer_Status	1
+../Core/Src/user_diskio_spi.c:107:6:xchg_spi	1
+../Core/Src/user_diskio_spi.c:119:6:rcvr_spi_multi	1
+../Core/Src/user_diskio_spi.c:137:6:xmit_spi_multi	2
+../Core/Src/user_diskio_spi.c:154:5:wait_ready	3
+../Core/Src/user_diskio_spi.c:181:6:despiselect	1
+../Core/Src/user_diskio_spi.c:195:5:spiselect	2
+../Core/Src/user_diskio_spi.c:212:5:rcvr_datablock	4
+../Core/Src/user_diskio_spi.c:241:5:xmit_datablock	4
+../Core/Src/user_diskio_spi.c:269:6:send_cmd	10
+../Core/Src/user_diskio_spi.c:328:16:USER_SPI_initialize	21
+../Core/Src/user_diskio_spi.c:384:16:USER_SPI_status	2
+../Core/Src/user_diskio_spi.c:399:16:USER_SPI_read	11
+../Core/Src/user_diskio_spi.c:438:16:USER_SPI_write	14
+../Core/Src/user_diskio_spi.c:479:16:USER_SPI_ioctl	27
